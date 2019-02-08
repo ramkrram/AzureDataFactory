@@ -1,0 +1,44 @@
+{
+	"name": "Testing_ADF_Repo",
+	"properties": {
+		"activities": [
+			{
+				"name": "Testing_ADF_REpo",
+				"type": "Copy",
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"typeProperties": {
+					"source": {
+						"type": "FileSystemSource",
+						"recursive": true
+					},
+					"sink": {
+						"type": "AzureDataLakeStoreSink"
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "input_file",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "fADLS_File_ADLS",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "DataFactory_Dev"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}
